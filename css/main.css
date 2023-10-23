@@ -1,0 +1,405 @@
+@import "./reset.css";
+@import url('https://fonts.googleapis.com/css2? Family= DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,700;1,9. .40,500 & Family= Poppins:wght@400;500;700 & display=swap');
+
+/*
+font-family: 'DM Sans', sans-serif;
+font-family: 'Poppins', sans-serif;
+*/
+
+
+/*General*/
+:root{
+    --blak-naw: #171718;
+    --black: #252526;
+    --black-border: #26292d;
+    --white: #fff;
+    --purple: #5C62EC;
+    --dark-bg: var(--black); /*переменная ссылается на переменную блэк*/
+    --dark-border: var(--black-border);
+    --header-text: var(--white);
+    --accent: var(--purple); /*акцентный цвет*/
+    --text-color:var(--black);
+
+/*light mode*/
+    --page-bg: var(--white);
+    --text-color: var(--black);
+    --title-1: var(--accent);
+
+}
+/*#171718*/
+
+.dark{
+
+    --page-bg: var(--black);
+    --text-color: var(--white);
+    --title-1: var(--white);
+}
+
+
+
+
+
+
+
+
+html, body{
+    font-family: 'DM Sans', sans-serif;
+    letter-spacing: -0.5px; /* можно сжать или растянуть текст на веб-странице. При этом расстояние между буквами и другими символами уменьшается или увеличивается, а сами символы остаются прежнего размера.*/
+    height: 100%;
+    display: flex;
+    flex-direction: column; /* Направление, в котором блоки будут располагаться вертикально */
+    background-color: var(--page-bg);
+    color: var(--text-color);
+}
+
+.container{
+    margin: 0 auto;
+    padding: 0 15px;
+    max-width: 1200px;
+    
+}
+
+.title-1{
+  
+    margin-top: 60px;
+    margin-bottom: 60px; /*отсуп снизу*/
+    font-size: 60px;
+    font-weight: 700;
+    line-height: 1.3;
+    color:var(--title-1);
+    text-align: center;}
+  
+
+.title-2{
+  
+    margin-bottom: 20px; /*устанавливает внешний отступ внизу элемента*/
+    font-size: 40px;
+    line-height: 1.3; /*высота строки*/
+    font-weight: 700;
+    }
+
+.none{
+    display: none !important;
+}
+
+.secion{
+    padding: 70px 0;
+    
+    }
+
+    
+/*Nav*/
+
+.nav{
+    border-bottom: 1px solid  #26292d;
+    padding: 20px 0 ;  /*отступ*/
+    background-color: var(--blak-naw); /*цвет фона*/
+    color: var(--header-text);
+    letter-spacing: normal;
+}
+
+.naw-row{
+    display: flex;/*выстраивает в ряд*/
+    justify-content: space-between; /* крайние элементы прижимаются к краям родителя, оставшиеся выстраиваются внутри контейнера равномерно, так, чтобы между ними были одинаковые отступы*/
+    align-items: center;
+    column-gap: 30px;/*отступ*/
+    row-gap: 20px;
+    flex-wrap: wrap;
+}
+
+.logo{
+    margin-right: auto ;
+color: var(--header-text);
+font-size: 24px; /*указываю размер*/
+font-family: 'Poppins', sans-serif;
+
+}
+
+.logo a{
+    margin-left: auto;
+}
+
+
+.logo strong {
+    font-weight: 700; /*указываю толщину*/
+}
+
+.nav-list{
+  display: flex; /*выравнивание по центру горизонтально*/
+  align-items: center;/* выравнивание по центру по вертикали*/ 
+column-gap: 40px;  /*отступ */
+font-size: 16px;
+font-weight: 500;
+font-family: 'Poppins', sans-serif;
+}
+
+.nav-list__link{
+    color: var(--header-text);
+    transition: opaciti 0.2s ease-in;
+}
+.nav-list__link:hover{
+opacity: 0.8;
+
+}
+/*создание активного элемента подчёркивания*/
+.nav-list__link--active{
+position: relative;
+}
+
+.nav-list__link--active:before{
+    content: "";/*у любого псевдо-элемента должно быть это свойство*/
+    
+
+    /*распологаем подчёркивание внизу ссылки*/
+    position: absolute;
+    left: 0;
+    top: 100% ;
+
+    
+    display: block; /*элементы списка отображаются один под другим на странице*/
+    height: 2px; /*высота 2 пикселя*/
+    width: 100%; /*ширина 100%*/
+    background-color: var(--accent);
+}
+
+
+/*Dark Mode BTN*/
+
+
+.dark-mode-btn{
+    order: 9;
+    position: relative;
+    display: flex;/*это способ позиционирования элементов в CSS.*/
+    justify-content: space-between; /* Равномерно распределяет все элементы по ширине flex-блока.
+    Первый элемент вначале, последний в конце */
+    width: 51px;/*ширина*/
+    height: 26;/*высота*/
+    border-radius: 50px;/*скругление углов*/
+    background-color: #272727;
+    padding: 5px;
+}
+
+.dark-mode-btn::before {   /*псевдоэлемент позволяет стилизовать определённую часть выбранного элемента*/
+    content: "";
+    position: absolute; /*Элемент исчезает с того места, где он должен быть и позиционируется заново. Остальные элементы, располагаются так, как будто этого элемента никогда не было.*/
+    top:1px; /*указываем что элемент будет в самом верху*/
+    left: 1px;/*указываем что элемент будет слева*/
+   
+    display: block; 
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: var(--white);
+    transition: left 0.2s ease-in;
+}
+
+.dark-mode-btn__icon{
+    position: relative;
+
+}
+.dark-mode-btn--active::before{
+    left: 26px;
+}
+
+
+
+
+/*Шапка*/
+.header{
+    padding: 40px 0;  
+    min-height: 695px;/*минимальная высота шапки*/
+height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+text-align: center;
+    background-color: var(--dark-bg);
+    color: var(--header-text);
+    background-image: url('./../img/Abstract.png');
+    background-repeat: no-repeat;/*фон не повторяется*/
+    background-size: auto;
+    background-position: center;
+}
+.header__wrapper{
+    padding: 0 15px;
+    max-width: 660px;/*максимальная ширина шапки*/
+
+}
+.header__title{
+margin-bottom: 20px;
+font-size: 40px;
+font-weight: 700;
+line-height: 1.4; /*высотра строки*/
+}
+
+.header__title strong{
+    font-size: 60px;
+    font-weight: 700;
+}
+.header__title em{
+font-style: normal;
+color: var(--purple);
+}
+
+.header__text{
+    margin-bottom: 40px;
+    font: 18px;
+    color:var(--white);
+    line-height: 1.333;
+}
+
+/*BTN*/
+
+.btn{
+display: inline-block;
+height: 48px;/*высота*/
+padding: 12px 28px;/*отступы сверху/снизу----справа/слева*/
+border-radius: 5px;
+background-color: var(--purple);
+color: var(--white);
+letter-spacing: 0.15px;
+font-weight: 500;
+font-size: 16px;
+transition: opacity 0.2s ease-in; /*через какое время кнопка станет более прозрачной*/
+}
+
+.btn:hover{ /*взаимодействие с кнопкой*/
+opacity: 0.8; /*сделать кнопку прозрачной при наведении*/
+
+}
+.btn:active{/*активизация кнопки*/
+position: relative; /*создать отступ вниз на 1px*/
+top: 1px;
+}
+
+
+
+
+.secion{
+padding: 70px 0;
+
+}
+
+
+
+/*Content list*/
+
+.content-list{
+ margin: 0 auto;/*определяет внешний отступ на всех четырёх сторонах элемента*/
+max-width: 570px; /*устанавливает максимальную ширину элемента*/
+display: flex;
+flex-direction: column;/*расставляет элементы в ряд или в колонку*/
+align-items: center;/*совместит центры родителя и каждого из элементов*/
+text-align: center; /*выравнивание текста по центру*/
+row-gap: 40px; /*расстояние между колонками*/
+
+}
+.content-list a{
+color: var(--accent);
+}
+
+
+
+.content-list__item{
+font-size: 18;
+line-height: 1.5;
+}
+
+
+
+
+/*FOOTER*/
+
+
+
+
+.footer{
+    border: 1px solid #26292d;
+    margin-top: auto;
+    padding: 20px 0 20px;
+    background-color:var(--blak-naw);
+    color: var(--white);
+}
+
+.footer__wrapper{
+   
+display: flex;
+flex-direction: column; /*выстроить в колонку*/
+align-items: center;
+row-gap: 27px;/*отступ*/
+}
+
+.social{
+display: flex;
+column-gap: 30px;
+align-items: center;
+
+}
+.copyright{
+    font-size: 16px;
+}
+
+
+/*Оптимизация под телефоны*/
+
+
+@media(max-width: 620px) {
+.header{
+    min-height: unset;
+}
+
+.secion{
+    padding: 40px 0;
+}
+
+
+    .header__title{
+        font-size: 30px;
+    }
+
+
+.header__title strong{
+font-size: 40px;
+}
+
+.footer{
+    padding: 40px 0 30px;
+}
+.social__item{
+    width: 28px;
+}
+
+.footer__wrapper{
+    row-gap:20px
+}
+.social{
+
+column-gap: 20px;
+}
+.title-1{
+    margin-bottom: 30px;
+    font-size: 40px;
+}
+.title-2{
+    margin-bottom:10px;
+    font-size: 30px;
+}
+
+.content-list{
+    row-gap: 20px;
+}
+.content-list__item{
+    font-size: 16px;
+}
+
+.naw-row{
+    justify-content: space-between; /* крайние элементы прижимаются к краям родителя, оставшиеся выстраиваются внутри контейнера равномерно, так, чтобы между ними были одинаковые отступы*/
+}
+
+.dark-mode-btn { /*order определяет порядок, используемый для размещения flex элементов в их flex контейнере.*/
+    order: 0;
+}
+
+
+
+}
